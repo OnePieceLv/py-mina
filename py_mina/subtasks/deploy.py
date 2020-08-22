@@ -155,6 +155,7 @@ def link_shared_paths():
             relative_path = '/'.join(['.', sfile])
             directory, filename_ = os.path.split(relative_path)
             shared_path = '/'.join([shared, sfile])
+            echo_status("cp {} {}".format(relative_path, shared_path), error=False)
             os.system("cp {} {}".format(relative_path, shared_path))
             if run("test -f {}".format(shared_path)).failed:
                 echo_status("not found {}".format(shared_path), error=True)
